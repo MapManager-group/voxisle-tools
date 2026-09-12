@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react'
-import type { Tool } from '../../config'
+import { QR_API, SCHEMATIC_API, type Tool } from '../../config'
 import { AppFooter } from './AppFooter'
 import { PageHeader } from './PageHeader'
 import { Sidebar } from './Sidebar'
 
 export function AppLayout({ activeTool, eyebrow, title, description, children }: { activeTool: Tool; eyebrow: string; title: string; description: string; children: ReactNode }) {
-  return <div className="app-shell"><Sidebar activeTool={activeTool}/><div className="content-shell"><main className="main"><PageHeader eyebrow={eyebrow} title={title} description={description}/>{children}<AppFooter/></main></div></div>
+  const apiUrl = activeTool === 'qrcode' ? QR_API : SCHEMATIC_API
+  return <div className="app-shell"><Sidebar activeTool={activeTool}/><div className="content-shell"><main className="main"><PageHeader key={apiUrl} eyebrow={eyebrow} title={title} description={description} apiUrl={apiUrl}/>{children}<AppFooter/></main></div></div>
 }
