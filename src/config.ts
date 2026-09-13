@@ -7,4 +7,4 @@ function requiredEnv(name: keyof ImportMetaEnv) {
 export const QR_API = requiredEnv('VITE_QR_API_BASE_URL')
 export const SCHEMATIC_API = requiredEnv('VITE_SCHEMATIC_API_BASE_URL')
 export const LOGO_CDN_URL = requiredEnv('VITE_LOGO_CDN_URL')
-export type Tool = 'home' | 'qrcode' | 'schematic'
+export type Tool = 'home' | 'resources' | 'qrcode' | 'schematic'
