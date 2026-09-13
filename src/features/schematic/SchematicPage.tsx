@@ -55,7 +55,7 @@ export function SchematicPage() {
             const data = await response.json() as UploadResult;
             setUploadResult(data);
             setDownloadKey(data.download_key);
-            setNotice({tone: 'success', text: '文件已上传。请立即保存下面的两个密钥。'})
+            setNotice({tone: 'success', text: '文件已上传。请保存下面的下载密钥和加载命令。'})
         } catch (error) {
             setNotice({tone: 'error', text: error instanceof Error ? error.message : '上传失败，请稍后重试。'})
         } finally {
@@ -126,9 +126,9 @@ export function SchematicPage() {
                                className="credentials-card">
             <div className="credential-grid"><Credential label="下载密钥 · 可分享" value={uploadResult.download_key}
                                                          onCopy={() => copy(uploadResult.download_key, '下载密钥')}/>
-              {/*<Credential*/}
-              {/*  label="删除密钥 · 请保密" value={uploadResult.delete_key} sensitive*/}
-              {/*  onCopy={() => copy(uploadResult.delete_key, '删除密钥')}/>*/}
+              <Credential
+                label="在方屿加载" value={`/schemcloud load url:${uploadResult.download_key}`}
+                onCopy={() => copy(`/schemcloud load url:${uploadResult.download_key}`, '加载命令')}/>
             </div>
         </Card>}</AppLayout>
 }
