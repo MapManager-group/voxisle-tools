@@ -1,4 +1,20 @@
-# React + TypeScript + Vite
+# 方屿工具箱
+
+首页为工具卡片目录，默认访问首页，也可通过 `#home` 返回。已有工具地址保持为 `#qrcode` 和 `#schematic`。
+
+## 手动添加工具
+
+编辑 `src/features/home/tools.ts`，将任意预留项的 `name`、`description`、`href` 填好即可：
+
+```ts
+{ name: '工具名称', description: '工具介绍', href: 'https://example.com/' },
+```
+
+预留了 7 张卡片；链接为空时显示禁用的“待添加”按钮。可继续复制条目或删除多余预留项。外部网站在新标签页打开，站内工具在当前页面打开。
+
+介绍参考：[Chunker](https://www.chunker.app)、[hueblocks 项目说明](https://github.com/1280px/hueblocks)、[MCEdit](https://www.mcedit.net/)。
+
+## 开发环境
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
