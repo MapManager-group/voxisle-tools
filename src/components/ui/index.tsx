@@ -2,9 +2,10 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { Icon, type IconName } from './Icon'
 
 export type Notice = { tone: 'success' | 'error'; text: string } | null
+export type TagTone = 'blue' | 'cyan' | 'green' | 'amber' | 'purple' | 'rose' | 'slate'
 
-export function Card({ title, description, children, className = '' }: { title: string; description?: string; children: ReactNode; className?: string }) {
-  return <section className={`card ${className}`}><header className="card-header"><h2>{title}</h2>{description && <p>{description}</p>}</header>{children}</section>
+export function Card({ title, description, tags, children, className = '' }: { title: string; description?: string; tags?: [label: string, tone: TagTone][]; children: ReactNode; className?: string }) {
+  return <section className={`card ${className}`}><header className="card-header"><h2>{title}</h2>{description && <p>{description}</p>}{tags?.length && <div className="tag-list" aria-label="标签">{tags.map(([label, tone]) => <span className={`tag tag-${tone}`} key={`${label}-${tone}`}>{label}</span>)}</div>}</header>{children}</section>
 }
 
 export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {

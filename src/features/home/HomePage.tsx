@@ -11,7 +11,7 @@ export function HomePage() {
         <div className="tool-grid">
       {group.tools.map((tool) => {
         const external = /^https?:\/\//i.test(tool.href)
-        return <Card key={tool.href} title={tool.name} description={tool.description} className="tool-card">
+        return <Card key={tool.href} title={tool.name} description={tool.description} tags={tool.tags} className="tool-card">
           <a className="button button-secondary button-wide" href={tool.href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} aria-label={`${external ? '访问' : '打开'}${tool.name}${external ? '（新标签页）' : ''}`}>
             {external ? '访问网站' : '打开工具'}<Icon name={external ? 'external' : 'arrow'}/>
           </a>
