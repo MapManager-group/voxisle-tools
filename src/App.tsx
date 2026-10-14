@@ -4,7 +4,6 @@ import { QrCodePage } from './features/qrcode/QrCodePage'
 import { SchematicPage } from './features/schematic/SchematicPage'
 import { HomePage } from './features/home/HomePage'
 import { ResourcesPage } from './features/resources/ResourcesPage'
-import './App.css'
 
 function currentTool(): Tool {
   if (location.hash === '#schematic') return 'schematic'

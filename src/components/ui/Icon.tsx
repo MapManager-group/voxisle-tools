@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 
-export type IconName = 'qr' | 'cloud' | 'download' | 'upload' | 'copy' | 'check' | 'home' | 'image' | 'arrow' | 'external' | 'sun' | 'moon'
+export type IconName = 'qr' | 'cloud' | 'download' | 'upload' | 'copy' | 'check' | 'home' | 'image' | 'arrow' | 'external' | 'sun' | 'moon' | 'menu' | 'close'
 
 const paths: Record<IconName, ReactNode> = {
+  menu: <path d="M4 6h16M4 12h16M4 18h16"/>,
+  close: <path d="m6 6 12 12M18 6 6 18"/>,
   home: <><path d="m3 10 9-7 9 7v10H3Z"/><path d="M9 20v-7h6v7"/></>,
   image: <><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 2-2 5 5"/></>,
   arrow: <path d="M4 12h16m-6-6 6 6-6 6"/>,

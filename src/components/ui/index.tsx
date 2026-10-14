@@ -17,7 +17,7 @@ export function Status({ notice }: { notice: Notice }) {
 }
 
 export function Button({ icon, tone = 'primary', wide = true, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { icon: IconName; tone?: 'primary' | 'secondary'; wide?: boolean }) {
-  return <button {...props} className={`button button-${tone}${wide ? ' button-wide' : ''}`}><Icon name={icon}/>{children}</button>
+  return <button type="submit" {...props} className={`button button-${tone}${wide ? ' button-wide' : ''}`}><Icon name={icon}/>{children}</button>
 }
 
 export function EmptyState({ icon, title, text }: { icon: IconName; title: string; text: string }) {

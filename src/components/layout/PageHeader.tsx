@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Icon } from '../ui/Icon'
+import { Brand } from './Brand'
 
-export function PageHeader({ eyebrow, title, description, apiUrl }: { eyebrow: string; title: string; description: string; apiUrl?: string }) {
+export function PageHeader({ eyebrow, title, description, apiUrl, onOpenMenu }: { eyebrow: string; title: string; description: string; apiUrl?: string; onOpenMenu: () => void }) {
   const [apiAvailable, setApiAvailable] = useState<boolean | null>(null)
   const [theme, setTheme] = useState<'light' | 'dark'>(() => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light')
 
@@ -27,5 +28,15 @@ export function PageHeader({ eyebrow, title, description, apiUrl }: { eyebrow: s
     setTheme(nextTheme)
   }
 
-  return <header className="page-header"><div><span className="eyebrow">{eyebrow}</span><h1>{title}</h1><p>{description}</p></div><div className="page-header-actions">{apiUrl && <span className={`service-status service-status-${status}`} role="status" aria-label={statusText} title={statusText}><i aria-hidden="true"/>{statusText}</span>}<button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}><Icon name={theme === 'dark' ? 'sun' : 'moon'}/></button></div></header>
+  return <>
+    <header className="topbar">
+      <div className="topbar-brand"><button type="button" className="icon-button menu-toggle" aria-label="打开导航菜单" aria-haspopup="dialog" onClick={onOpenMenu}><Icon name="menu"/></button><Brand/></div>
+      <div className="topbar-context"><span className="topbar-divider"/>Minecraft 创作与实用工具</div>
+      <div className="page-header-actions">{apiUrl && <span className={`service-status service-status-${status}`} role="status" aria-label={statusText} title={statusText}><i aria-hidden="true"/><span>{statusText}</span></span>}<button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}><Icon name={theme === 'dark' ? 'sun' : 'moon'}/></button></div>
+    </header>
+    <header className="page-header">
+      <nav className="breadcrumb" aria-label="面包屑"><a href="#home"><Icon name="home"/>工具箱</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
+      <div className="page-heading"><div><span className="eyebrow">{eyebrow}</span><h1>{title}</h1><p>{description}</p></div></div>
+    </header>
+  </>
 }

@@ -7,7 +7,7 @@ export function HomePage() {
   return <AppLayout activeTool="home" eyebrow="VOXISLE TOOLS" title="工具首页" description="从建筑蓝图、世界转换到方块配色，找到下一次创作需要的工具。">
     <div className="catalog-sections">
       {toolGroups.map((group) => <section className="catalog-section" key={group.name}>
-        <header className="section-header"><h2>{group.name}</h2><p>{group.description}</p></header>
+        <header className="section-header"><div className="section-title"><h2>{group.name}</h2><span className="section-count" aria-label={`${group.tools.length} 个工具`}>{group.tools.length}</span></div>{group.description && <p>{group.description}</p>}</header>
         <div className="tool-grid">
       {group.tools.map((tool) => {
         const external = /^https?:\/\//i.test(tool.href)

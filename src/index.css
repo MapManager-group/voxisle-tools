@@ -1,4 +1,74 @@
-:root{font-family:Inter,'PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:#334155;background:#f6fafb;color-scheme:light;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--ink:#1d1f2a;--navy:#1b365d;--primary:#004c97;--primary-active:#003b75;--focus:#3fc2d0;--focus-muted:#a4dbe8;--canvas:#f6fafb;--surface:#fff;--surface-muted:#f1f5f9;--border:#e2e8f0;--text:#334155;--muted:#64748b;--success:#438000;--danger:#c80025;--radius-control:.75rem;--radius-card:1rem}
-*{box-sizing:border-box;scrollbar-color:#94a3b8 #e2e8f0;scrollbar-width:thin}*::-webkit-scrollbar{width:8px;height:8px}*::-webkit-scrollbar-track{background:#e2e8f0}*::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:999px}*::-webkit-scrollbar-thumb:hover{background:#64748b}body{margin:0;min-width:320px;min-height:100svh}button,input,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}::selection{color:var(--navy);background:var(--focus-muted)}
-:root[data-theme=dark]{color:#cbd5e1;background:#1e293b;color-scheme:dark;--canvas:#1e293b;--surface:#0f172a;--surface-muted:#1e293b;--border:#334155;--text:#e2e8f0;--muted:#94a3b8;--success:#9adb3b;--danger:#ff5c73}:root[data-theme=dark] *{scrollbar-color:#64748b #1e293b}:root[data-theme=dark] *::-webkit-scrollbar-track{background:#1e293b}:root[data-theme=dark] *::-webkit-scrollbar-thumb{background:#64748b}
-@media(forced-colors:active){*{scrollbar-color:auto}}
+@import './App.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--canvas);
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: theme('colors.gray.900');
+  --navy: theme('colors.primary.700');
+  --primary: theme('colors.primary.600');
+  --primary-active: theme('colors.primary.700');
+  --focus: theme('colors.primary.500');
+  --focus-muted: theme('colors.primary.100');
+  --accent: #b84700;
+  --accent-muted: #ffead7;
+  --canvas: theme('colors.gray.50');
+  --surface: #fff;
+  --surface-muted: theme('colors.gray.100');
+  --border: theme('colors.gray.200');
+  --text: theme('colors.gray.700');
+  --muted: theme('colors.gray.500');
+  --success: #3d7a17;
+  --danger: #9f151f;
+  --radius-control: .5rem;
+  --radius-card: .5rem;
+  --scroll-thumb: theme('colors.gray.400');
+  --scroll-track: theme('colors.gray.100');
+  --scroll-hover: theme('colors.gray.500');
+  --scroll-active: theme('colors.gray.600');
+}
+:root[data-theme=dark] {
+  color-scheme: dark;
+  --ink: theme('colors.gray.100');
+  --primary: theme('colors.primary.300');
+  --primary-active: theme('colors.primary.100');
+  --focus-muted: #1e3a5f;
+  --accent: #fab479;
+  --accent-muted: #432b1d;
+  --canvas: theme('colors.gray.900');
+  --surface: theme('colors.gray.800');
+  --surface-muted: theme('colors.gray.700');
+  --border: theme('colors.gray.700');
+  --text: theme('colors.gray.200');
+  --muted: theme('colors.gray.400');
+  --success: #9adb3b;
+  --danger: #ffb1bd;
+  --scroll-thumb: theme('colors.gray.500');
+  --scroll-track: theme('colors.gray.800');
+  --scroll-hover: theme('colors.gray.400');
+  --scroll-active: #cbd5e1;
+}
+* { box-sizing: border-box; scrollbar-color: var(--scroll-thumb) var(--scroll-track); scrollbar-width: thin; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: var(--scroll-track); }
+*::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--scroll-hover); }
+*::-webkit-scrollbar-thumb:active { background: var(--scroll-active); }
+html { scrollbar-gutter: stable; scroll-padding-top: 88px; }
+html:has(.mobile-menu[open]) { overflow: hidden; }
+body { margin: 0; min-width: 320px; min-height: 100svh; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a, button:not(:disabled), select, input[type=color], input[type=checkbox] { cursor: pointer; }
+::selection { color: var(--ink); background: var(--focus-muted); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+@media (forced-colors: active) { * { scrollbar-color: auto; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
