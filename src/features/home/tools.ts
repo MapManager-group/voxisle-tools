@@ -38,6 +38,12 @@ export const toolGroups: { name: string; description: string; tools: ToolCard[] 
                 tags: [['方屿', 'blue'], ['二维码', 'cyan'], ['站内工具', 'green']]
             },
             {
+                name: 'BDEngine',
+                description: '通过可视化页面，使用mc中的元素创建mc中的展示实体。',
+                href: '#qrcode',
+                tags: [['3D', 'purple'], ['实体', 'cyan'], ['在线生成', 'green']]
+            },
+            {
                 name: '玻璃像素画生成器',
                 description: '将图片转换为由 Minecraft 彩色玻璃构成的像素画，并提供可调整的生成参数与搭建参考。',
                 href: 'https://imhols.github.io/minecraft-glasspixel-generator/',
