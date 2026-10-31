@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Icon } from '../ui/Icon'
 import { Brand } from './Brand'
 
-export function PageHeader({ eyebrow, title, description, apiUrl, onOpenMenu }: { eyebrow: string; title: string; description: string; apiUrl?: string; onOpenMenu: () => void }) {
+export function PageHeader({ eyebrow, title, description, apiUrl, menuOpen, onOpenMenu }: { eyebrow: string; title: string; description: string; apiUrl?: string; menuOpen: boolean; onOpenMenu: () => void }) {
   const [apiAvailable, setApiAvailable] = useState<boolean | null>(null)
   const [theme, setTheme] = useState<'light' | 'dark'>(() => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light')
 
@@ -30,7 +30,7 @@ export function PageHeader({ eyebrow, title, description, apiUrl, onOpenMenu }: 
 
   return <>
     <header className="topbar">
-      <div className="topbar-brand"><button type="button" className="icon-button menu-toggle" aria-label="打开导航菜单" aria-haspopup="dialog" onClick={onOpenMenu}><Icon name="menu"/></button><Brand/></div>
+      <div className="topbar-brand"><button type="button" className="icon-button menu-toggle" aria-label="打开导航菜单" aria-haspopup="dialog" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={onOpenMenu}><Icon name="menu"/></button><Brand/></div>
       <div className="topbar-context"><span className="topbar-divider"/>Minecraft 创作与实用工具</div>
       <div className="page-header-actions">{apiUrl && <span className={`service-status service-status-${status}`} role="status" aria-label={statusText} title={statusText}><i aria-hidden="true"/><span>{statusText}</span></span>}<button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}><Icon name={theme === 'dark' ? 'sun' : 'moon'}/></button></div>
     </header>

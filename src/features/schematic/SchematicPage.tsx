@@ -111,14 +111,14 @@ export function SchematicPage() {
                         className="empty-icon"><Icon
                         name="upload"/></span><strong>{file ? file.name : '拖放蓝图到这里'}</strong><span>{file ? formatBytes(file.size) : '或点击选择 .schem 或 .schematic 文件'}</span></label>
                     </div>
-                    <Status notice={notice}/><Button icon="upload"
+                    <Status notice={notice}/><Button icon="upload" busy={busy}
                                                      disabled={busy}>{busy ? '正在上传…' : '上传蓝图'}</Button></form>
             </Card>
             <Card title="通过密钥下载" description="输入上传者分享的下载密钥。">
-                <form noValidate onSubmit={download}><Field label="下载密钥" hint="32 位小写十六进制字符串"><input
-                    className="mono" value={downloadKey} onChange={(e) => setDownloadKey(e.target.value)}
+                <form noValidate onSubmit={download}><Field id="schematic-download-key" label="下载密钥" hint="32 位小写十六进制字符串"><input
+                    id="schematic-download-key" aria-describedby="schematic-download-key-help" className="mono" value={downloadKey} onChange={(e) => setDownloadKey(e.target.value)}
                     autoComplete="off" aria-label="下载密钥"/></Field><Status notice={downloadNotice}/><Button
-                    icon="download" tone="secondary"
+                    icon="download" tone="secondary" busy={downloading}
                     disabled={downloading}>{downloading ? '正在下载…' : '下载文件'}</Button></form>
             </Card>
         </div>

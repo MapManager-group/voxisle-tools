@@ -27,3 +27,8 @@
 ## 验证
 
 执行 `npm run lint`、`npm run build`、Premium strict audit。使用浏览器验证四个路由、深浅主题、桌面/窄屏、移动菜单键盘与焦点、二维码和蓝图的模拟成功/失败与文件下载。报告区分模拟验证与真实 API 联调；不对未运行的交互作通过声明。
+
+
+## 2026-10-31 共享组件交互统一
+
+移动菜单补充遮罩关闭、Tab/Shift+Tab 双向循环、触发器展开状态，以及切回桌面自动关闭；保留原生 dialog 的隔离和焦点恢复。Field 标签关联原控件及帮助文案；Button 使用现有 busy 标记暴露禁用与忙碌反馈。所有字段值、校验规则、请求结构、错误文案与下载行为沿用原实现。跨项目浏览器回归见同工作区 lorianmanager-fr/tests/design-interactions.cjs。

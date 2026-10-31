@@ -8,16 +8,16 @@ export function Card({ title, description, tags, children, className = '' }: { t
   return <section className={`card ${className}`}><header className="card-header"><h2>{title}</h2>{description && <p>{description}</p>}{tags?.length && <div className="tag-list" aria-label="标签">{tags.map(([label, tone]) => <span className={`tag tag-${tone}`} key={`${label}-${tone}`}>{label}</span>)}</div>}</header>{children}</section>
 }
 
-export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
-  return <div className="field"><div className="field-label">{label}</div>{children}<div className="field-help">{hint ?? '\u00a0'}</div></div>
+export function Field({ id, label, hint, children }: { id: string; label: string; hint?: string; children: ReactNode }) {
+  return <div className="field"><label className="field-label" htmlFor={id}>{label}</label>{children}{hint && <div className="field-help" id={`${id}-help`}>{hint}</div>}</div>
 }
 
 export function Status({ notice }: { notice: Notice }) {
   return notice && <div className={`notice notice-${notice.tone}`} role={notice.tone === 'error' ? 'alert' : 'status'}>{notice.text}</div>
 }
 
-export function Button({ icon, tone = 'primary', wide = true, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { icon: IconName; tone?: 'primary' | 'secondary'; wide?: boolean }) {
-  return <button type="submit" {...props} className={`button button-${tone}${wide ? ' button-wide' : ''}`}><Icon name={icon}/>{children}</button>
+export function Button({ icon, tone = 'primary', wide = true, busy = false, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { icon: IconName; tone?: 'primary' | 'secondary'; wide?: boolean; busy?: boolean }) {
+  return <button type="submit" {...props} disabled={busy || props.disabled} aria-busy={busy || undefined} className={`button button-${tone}${wide ? ' button-wide' : ''}`}><span className="button-icon">{busy ? <span className="button-spinner" aria-hidden="true"/> : <Icon name={icon}/>}</span>{children}</button>
 }
 
 export function EmptyState({ icon, title, text }: { icon: IconName; title: string; text: string }) {
