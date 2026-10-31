@@ -40,7 +40,7 @@ export const toolGroups: { name: string; description: string; tools: ToolCard[] 
             {
                 name: 'BDEngine',
                 description: '通过可视化页面，使用mc中的元素创建mc中的展示实体。',
-                href: '#qrcode',
+                href: 'https://bdengine.app',
                 tags: [['3D', 'purple'], ['实体', 'cyan'], ['在线生成', 'green']]
             },
             {
