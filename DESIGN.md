@@ -85,4 +85,4 @@ Field 通过显式 id 关联 label 与帮助说明，点击标签聚焦原输入
 
 ## 隐藏验证入口（2026-11-01）
 
-`/lcverify` 不进入菜单或首页卡片，使用共享 Card / Status 与现有 main 布局，显示提交中、已提交和失败。只读取 userName、verify，以同域 JSON POST 转发至飞书；不显示参数或原始响应，不自动重试。原有 hash 工具路由保持不变。
+`/lcverify` 不进入菜单或首页卡片，使用共享 Card / Status 与现有 main 布局，显示发送中、已发送但结果待确认和网络失败。只读取 userName、verify，纯前端直接向飞书 POST JSON 文本（no-cors / text/plain）；不显示参数或原始响应，不自动重试。原有 hash 工具路由保持不变。

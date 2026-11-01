@@ -11,13 +11,13 @@ export function LcVerifyPage() {
     request.current ??= submitVerification(location.search)
     let active = true
     request.current.then(() => {
-      if (active) setNotice({ tone: 'success', text: '验证请求已提交，可以关闭此页面。' })
+      if (active) setNotice({ tone: 'success', text: '验证请求已发送。浏览器无法确认飞书处理结果，请以飞书工作流记录为准。' })
     }).catch(error => {
-      if (active) setNotice({ tone: 'error', text: error instanceof Error && error.name === 'Error' ? error.message : '无法确认提交结果，请联系管理员确认，避免重复提交。' })
+      if (active) setNotice({ tone: 'error', text: error instanceof Error ? error.message : '无法确认提交结果，请联系管理员确认，避免重复提交。' })
     })
     return () => { active = false }
   }, [])
-  return <main className="main"><Card title="验证" description="正在处理此验证链接。">
-    {notice ? <Status notice={notice}/> : <p role="status" aria-busy="true">正在提交，请稍候…</p>}
+  return <main className="main"><Card title="验证" description="此页面会自动发送链接中的验证信息。">
+    {notice ? <Status notice={notice}/> : <p role="status" aria-busy="true">正在发送，请稍候…</p>}
   </Card></main>
 }

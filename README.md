@@ -4,11 +4,11 @@
 
 ## 隐藏验证页
 
-访问 `/lcverify?userName=...&verify=...` 会自动以 JSON 提交两个参数，其中 `userName` 和 `verify` 均保留为字符串；URL 中的值请使用 `encodeURIComponent` 编码。只转发这两个字段，缺失、空白或重复参数不发送。此页不在菜单和首页卡片中展示。提交成功表示飞书已接收请求，不表示工作流已执行完成；超时或网络异常不会自动重试，刷新页面会再次提交。
+访问 `/lcverify?userName=...&verify=...` 会自动向飞书 webhook POST JSON 内容，其中 `userName` 和 `verify` 均保留为字符串；URL 中的值请使用 `encodeURIComponent` 编码。只发送这两个字段，缺失、空白或重复参数不发送。此页不在菜单和首页卡片中展示。
 
-飞书 webhook 当前没有允许浏览器 JSON 请求的 CORS 响应头，所以页面通过同域 `POST /api/lcverify` 转发。`npm run dev` 已配置开发代理；生产部署必须配置同域代理，仅上传静态文件不足以完成转发。
+纯前端直接请求飞书，不调用 `/api/lcverify`，不依赖 Vite 或 Nginx 转发。由于飞书未提供跨域响应读取能力，采用 `mode: 'no-cors'`、`Content-Type: text/plain;charset=UTF-8`，请求体仍为 JSON 文本。页面不读取状态码或响应体，提示“已发送，处理结果待确认”；HTTP 错误、业务拒绝与成功均无法在页面上区分。2026-11-01 已向该 webhook 实测发送一次此格式的 JSON 请求，返回 HTTP 200、`{"code":0,"msg":"","data":{}}`，确认接口接受该请求；工作流内部字段绑定和执行结果仍以飞书记录为准。超时或网络异常不自动重试，刷新页面会再次提交。
 
-Nginx 部署：在 `tools.voxisle.art` 的 `server` 内引入 `deploy/lcverify.nginx.conf`（静态 `root` 指向构建后的 `dist`），检查 `nginx -t` 后重载。其他托管平台需要配置等效的服务端转发。隐藏路径不提供鉴权；飞书工作流需要校验 `verify` 与 `userName` 的对应关系。URL 参数可能进入访问日志，部署时应避免记录验证页 query。
+部署只需发布前端构建，保留 `/lcverify` 的 SPA 页面回退。此前的 `/api/lcverify` 代理配置已移除，不再使用。隐藏路径不提供鉴权；飞书工作流需要校验 `verify` 与 `userName` 的对应关系。请求不携带浏览器凭证或 Referer；URL 参数可能进入站点访问日志，部署时应避免记录验证页 query。
 
 侧边菜单中的「地图管理平台」在新标签页打开 [地图管理平台](https://map.voxisle.art)。
 
