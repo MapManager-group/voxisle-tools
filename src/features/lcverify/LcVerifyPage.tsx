@@ -11,7 +11,7 @@ export function LcVerifyPage() {
     request.current ??= submitVerification(location.search)
     let active = true
     request.current.then(() => {
-      if (active) setNotice({ tone: 'success', text: '验证请求已发送。浏览器无法确认飞书处理结果，请以飞书工作流记录为准。' })
+      if (active) setNotice({ tone: 'success', text: '验证请求已发送，您可以关闭此页面。' })
     }).catch(error => {
       if (active) setNotice({ tone: 'error', text: error instanceof Error ? error.message : '无法确认提交结果，请联系管理员确认，避免重复提交。' })
     })
