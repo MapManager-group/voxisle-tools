@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { LcVerifyPage } from './features/lcverify/LcVerifyPage'
 import type { Tool } from './config'
 import { QrCodePage } from './features/qrcode/QrCodePage'
 import { SchematicPage } from './features/schematic/SchematicPage'
@@ -19,6 +20,7 @@ function App() {
     addEventListener('hashchange', update)
     return () => removeEventListener('hashchange', update)
   }, [])
+  if (location.pathname === '/lcverify' || location.pathname === '/lcverify/') return <LcVerifyPage/>
   return tool === 'qrcode' ? <QrCodePage/> : tool === 'schematic' ? <SchematicPage/> : tool === 'resources' ? <ResourcesPage/> : <HomePage/>
 }
 

@@ -2,9 +2,10 @@ import { useEffect, type RefObject } from 'react'
 import type { Tool } from '../../config'
 import { Icon, type IconName } from '../ui/Icon'
 
-const groups: { title: string; items: { tool: Tool; label: string; icon: IconName }[] }[] = [
+const groups: { title: string; items: { tool?: Tool; href?: string; label: string; icon: IconName }[] }[] = [
   { title: '概览', items: [{ tool: 'home', label: '工具首页', icon: 'home' }] },
   { title: '创作工具', items: [
+    { href: 'https://map.voxisle.art', label: '地图管理平台', icon: 'external' },
     { tool: 'schematic', label: 'Schematic Cloud', icon: 'cloud' },
     { tool: 'qrcode', label: '二维码生成器', icon: 'qr' },
   ] },
@@ -22,8 +23,8 @@ export function Sidebar({ activeTool, menuRef, onOpenChange }: { activeTool: Too
     <nav aria-label="主导航" className="sidebar-nav">
       {groups.map(group => <section className="nav-group" key={group.title}>
         <h2>{group.title}</h2>
-        <ul>{group.items.map(item => <li key={item.tool}>
-          <a href={`#${item.tool}`} className={activeTool === item.tool ? 'active' : ''} aria-current={activeTool === item.tool ? 'page' : undefined} onClick={() => menuRef.current?.close()}>
+        <ul>{group.items.map(item => <li key={item.tool ?? item.href}>
+          <a href={item.href ?? `#${item.tool}`} target={item.href ? '_blank' : undefined} rel={item.href ? 'noopener noreferrer' : undefined} className={activeTool === item.tool ? 'active' : ''} aria-current={activeTool === item.tool ? 'page' : undefined} onClick={() => menuRef.current?.close()}>
             <Icon name={item.icon}/><span>{item.label}</span>
           </a>
         </li>)}</ul>
