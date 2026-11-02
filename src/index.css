@@ -10,6 +10,7 @@
   background: var(--canvas);
   color-scheme: light;
   font-synthesis: none;
+  font-variant-numeric: tabular-nums;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   --ink: theme('colors.gray.900');
@@ -26,14 +27,14 @@
   --border: theme('colors.gray.200');
   --text: theme('colors.gray.700');
   --muted: theme('colors.gray.500');
-  --success: #3d7a17;
-  --danger: #9f151f;
+  --success: #2b7010;
+  --danger: #9f1239;
   --radius-control: .5rem;
   --radius-card: .5rem;
-  --scroll-thumb: theme('colors.gray.400');
-  --scroll-track: theme('colors.gray.100');
-  --scroll-hover: theme('colors.gray.500');
-  --scroll-active: theme('colors.gray.600');
+  --scroll-thumb: theme('colors.gray.300');
+  --scroll-track: theme('colors.gray.50');
+  --scroll-hover: theme('colors.gray.400');
+  --scroll-active: theme('colors.gray.500');
 }
 :root[data-theme=dark] {
   color-scheme: dark;
@@ -49,17 +50,17 @@
   --border: theme('colors.gray.700');
   --text: theme('colors.gray.200');
   --muted: theme('colors.gray.400');
-  --success: #9adb3b;
-  --danger: #ffb1bd;
-  --scroll-thumb: theme('colors.gray.500');
+  --success: #86efac;
+  --danger: #fda4af;
+  --scroll-thumb: theme('colors.gray.600');
   --scroll-track: theme('colors.gray.800');
-  --scroll-hover: theme('colors.gray.400');
-  --scroll-active: #cbd5e1;
+  --scroll-hover: theme('colors.gray.500');
+  --scroll-active: theme('colors.gray.400');
 }
 * { box-sizing: border-box; scrollbar-color: var(--scroll-thumb) var(--scroll-track); scrollbar-width: thin; }
 *::-webkit-scrollbar { width: 8px; height: 8px; }
 *::-webkit-scrollbar-track { background: var(--scroll-track); }
-*::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 4px; }
 *::-webkit-scrollbar-thumb:hover { background: var(--scroll-hover); }
 *::-webkit-scrollbar-thumb:active { background: var(--scroll-active); }
 html { scrollbar-gutter: stable; scroll-padding-top: 88px; }

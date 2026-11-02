@@ -36,7 +36,7 @@ spacing:
 
 ## 方向与依据
 
-2026-10-31：视觉规范以同工作区 MapManager-frontend 的 DESIGN.md、NavBar、AsideMenuItem、SectionMain 为准。共享顶栏采用 36px Logo、18px/700 品牌名、12px 元素间距；隐藏英文装饰副标题与 eyebrow，保留现有产品名称及导航。菜单分组间距 24px，菜单文字 14px/500、图标 21px、横向内边距 12px、纵向 10px，移除额外分隔线与选中圆点；浅色选中为 #EFF7FF，深色为 25% 透明度的 #004C97。
+2026-10-31：视觉规范以同工作区 MapManager-frontend 的 DESIGN.md、NavBar、AsideMenuItem、SectionMain 为准。共享顶栏采用 36px Logo、18px/700 品牌名、12px 元素间距；隐藏英文装饰副标题与 eyebrow，保留现有产品名称及导航。菜单分组间距 24px，菜单文字 14px/500、图标 20px、横向内边距 12px、纵向 10px，移除额外分隔线与选中圆点；浅色选中为 #EFF7FF，深色为 25% 透明度的 #004C97。
 
 面向 Minecraft 创作者的简体中文工具目录与文件工具。按本次用户指定的 [Flowbite Admin Dashboard](https://github.com/themesberg/flowbite-admin-dashboard) 重构：固定 64px 顶栏、256px 白色侧栏、浅灰工作区、带细边框与轻阴影的卡片。采用模板的 sidebar、navbar-dashboard、settings 表单和 Flowbite 组件配方，保留 React/Vite 架构。
 
@@ -86,3 +86,35 @@ Field 通过显式 id 关联 label 与帮助说明，点击标签聚焦原输入
 ## 隐藏验证入口（2026-11-01）
 
 `/lcverify` 不进入菜单或首页卡片，使用共享 Card / Status 与现有 main 布局，显示发送中、已发送但结果待确认和网络失败。只读取 userName、verify，纯前端直接向飞书 POST JSON 文本（no-cors / text/plain）；不显示参数或原始响应，不自动重试。原有 hash 工具路由保持不变。
+
+
+## 跨项目 Flowbite 视觉校准（2026-11-02）
+
+本轮仅修改 UI。以 MapManager-frontend 为基准，沿用 Flowbite Admin Dashboard 的固定顶栏、256px 分组侧栏、Slate 表面、方屿蓝、8px 圆角、44px 主控件与40px图标按钮；保留24px页面/区块间距、20px字段间距、24px分列间距及14px正文。图标统一为 MapManager 使用的 MDI，常规20px、导航24px盒内20px，紧凑操作保留16px；React 项目只内置所需矢量路径，来源许可见 docs/MDI-LICENSE.txt，不增加运行时依赖。表头/表格单元格桌面横向留白20px。交互仅使用150ms颜色过渡，抽屉保留原变换和焦点行为。状态采用柔和语义色，深色保持同一状态含义。
+
+设计方向：面向 Minecraft 地图、项目与创作工具管理，克制、清晰、紧凑；现有地图、表格、进度与状态承担信息重点，不添加装饰图或虚构数据。页面顺序、文案、权限、路由、请求、校验、主题存储与操作结果全部沿用原实现。unslop 方法来源：Damir Sokolovsky（https://github.com/heydamir/unslop），CC BY 4.0；本任务以用户指定的 Flowbite / MapManager 规范优先。
+
+状态色运行时映射：success 为 #2B7010 / green-50（深色 green-300 / green-950 40%），danger 为 rose-800 / rose-50（深色 rose-300 / rose-950 40%），危险实心按钮使用 rose-600 / rose-800；pending 使用 amber-800 / amber-50。品牌色、Slate 灰阶和标题字重继续采用 MapManager。
+
+
+### 全页面与弹窗复核（2026-11-02）
+
+站内信与附件改用品牌蓝、Slate 和 MDI；长标题、正文、文件名可换行。头像8px圆角，加载占位静止；通知使用有限宽度和150ms透明度/位移过渡。常规图标20px、紧凑图标16px、加载图标32px。
+
+标准弹窗统一576px上限、8px圆角、16/24px标题与正文留白、20px标题和16px操作区；MapManager保留原事件与焦点机制。LorianManager的表单容器在480px可用宽度起分两列，整行字段和顺序不变；独立确认正文兼作操作区时不使用表单专用负边距。工具箱隐藏验证页使用居中、有限宽度卡片；自动发送和结果处理保持原样。
+
+验证记录及跨项目脚本见 lorianmanager-fr/docs/UI-UNIFICATION-2026-11-02.md、tests/ui-deep-audit.cjs、tests/ui-business-invariants.cjs。路由、API、校验、权限、状态转换、确认后果和协议文案保持不变。
+
+
+### 实际样式校准与上传溢出（2026-11-02）
+
+以MapManager渲染值校准：表头12px/600、16px行高、20px横向留白，Slate 50浅色表头、Slate 700/50深色表头；紧凑按钮32px、普通按钮44px、徽标和标签最小24px，紧凑图标16px、普通按钮图标20px。次级按钮使用Slate 900/200文字和白色/Slate 800表面，禁用透明度统一50%；键盘焦点为brand 500的2px outline与2px偏移，取消重复焦点圈。字段值为Slate 900/白，字段标签与帮助层级保持原规范。
+
+滚动条统一由各项目既有全局样式维护：宽8px、4px圆角；浅色track/thumb/hover/active为Slate 50/300/400/500，深色为Slate 800/600/500/400。LorianManager的运行时表头角色为--color-table-header，CSS是唯一所有者。MapManager共享FormFilePicker使用min-width:0和受限文件名区域，长文件名省略展示，不扩大表单或页面；文件名原值、选择事件、校验和上传内容保持不变。
+
+LorianManager Premium解析超时按用户要求忽略，继续以浏览器、业务语法对比和原有测试验证；该项不标为通过。真实截图对比图在lorianmanager-fr/docs/screenshots/ui-comparison/，由tests/ui-comparison.cjs生成。
+
+
+全局通知视觉以MapManager的右上区域为基准：桌面顶距88px、右距24px；手机顶距80px、右距16px，最大宽384px。通知内容、触发和持续时间继续由原实现维护；工具箱的内联反馈不改成全局通知。表头透明背景必须以同一表面为底，避免重复叠色；tests/ui-fidelity.cjs检查真实合成色，而不只比较CSS声明。
+
+图标风格统一采用 MDI 默认实心版本，禁止混用 Outline 变体；箭头、关闭、菜单等基础符号沿用 MDI 标准几何路径。MapManager 主题按钮采用 mdiBrightness6，工具箱夜间按钮采用 mdiWeatherNight，不使用星月装饰组合。业务绑定和图标尺寸保持不变。

@@ -17,7 +17,7 @@ export function LcVerifyPage() {
     })
     return () => { active = false }
   }, [])
-  return <main className="main"><Card title="验证" description="此页面会自动发送链接中的验证信息。">
+  return <main className="main verification-page"><Card title="验证" description="此页面会自动发送链接中的验证信息。">
     {notice ? <Status notice={notice}/> : <p role="status" aria-busy="true">正在发送，请稍候…</p>}
   </Card></main>
 }
