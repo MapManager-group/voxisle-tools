@@ -33,7 +33,6 @@ export function Sidebar({ activeTool, menuRef, onOpenChange }: { activeTool: Too
         </li>)}</ul>
       </section>)}
     </nav>
-    <div className="sidebar-foot"><Icon name="check"/><span>文件由 Voxisle API 处理<small>请勿上传敏感内容</small></span></div>
   </>
   return <>
     <aside className="sidebar" aria-label="侧边菜单">{menu}</aside>
