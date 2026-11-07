@@ -55,7 +55,7 @@ export function SchematicPage() {
             const data = await response.json() as UploadResult;
             setUploadResult(data);
             setDownloadKey(data.download_key);
-            setNotice({tone: 'success', text: '文件已上传。请保存下面的下载密钥和加载命令。'})
+            setNotice({tone: 'success', text: '文件已上传。请保存下载密钥和加载命令。'})
         } catch (error) {
             setNotice({tone: 'error', text: error instanceof Error ? error.message : '上传失败，请稍后重试。'})
         } finally {
@@ -90,7 +90,7 @@ export function SchematicPage() {
             await navigator.clipboard.writeText(value);
             setNotice({tone: 'success', text: `${label}已复制。`})
         } catch {
-            setNotice({tone: 'error', text: '浏览器未允许复制，请手动选择密钥。'})
+            setNotice({tone: 'error', text: `${label}复制失败，请手动选择并复制。`})
         }
     }
 
@@ -114,21 +114,29 @@ export function SchematicPage() {
                     <Status notice={notice}/><Button icon="upload" busy={busy}
                                                      disabled={busy}>{busy ? '正在上传…' : '上传蓝图'}</Button></form>
             </Card>
-            <Card title="通过密钥下载" description="输入上传者分享的下载密钥。">
-                <form noValidate onSubmit={download}><Field id="schematic-download-key" label="下载密钥" hint="32 位小写十六进制字符串"><input
-                    id="schematic-download-key" aria-describedby="schematic-download-key-help" className="mono" value={downloadKey} onChange={(e) => setDownloadKey(e.target.value)}
-                    autoComplete="off" aria-label="下载密钥"/></Field><Status notice={downloadNotice}/><Button
-                    icon="download" tone="secondary" busy={downloading}
-                    disabled={downloading}>{downloading ? '正在下载…' : '下载文件'}</Button></form>
-            </Card>
+            {uploadResult ? <Card title="上传凭证" description="密钥不会再次显示，请现在复制并保存在安全位置。">
+                <div className="catalog-sections">
+                    <Credential label="下载密钥 · 可分享" value={uploadResult.download_key}
+                                onCopy={() => copy(uploadResult.download_key, '下载密钥')}/>
+                    <Credential label="在方屿加载" value={`/schemcloud load url:${uploadResult.download_key}`}
+                                onCopy={() => copy(`/schemcloud load url:${uploadResult.download_key}`, '加载命令')}/>
+                </div>
+            </Card> : <div className="catalog-sections">
+                <Card title="通过密钥下载" description="输入上传者分享的下载密钥。">
+                    <form noValidate onSubmit={download}><Field id="schematic-download-key" label="下载密钥" hint="32 位小写十六进制字符串"><input
+                        id="schematic-download-key" aria-describedby="schematic-download-key-help" className="mono" value={downloadKey} onChange={(e) => setDownloadKey(e.target.value)}
+                        autoComplete="off" aria-label="下载密钥"/></Field><Status notice={downloadNotice}/><Button
+                        icon="download" tone="secondary" busy={downloading}
+                        disabled={downloading}>{downloading ? '正在下载…' : '下载文件'}</Button></form>
+                </Card>
+                <Card title="从服务器导出schem">
+                    <ol className="list-decimal space-y-3 pl-5 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                        <li>先使用 WorldEdit / FAWE 选好要分享的区域，并使用 <button type="button" className="button button-secondary command-copy" aria-label="复制 //copy" onClick={() => copy('//copy', '//copy')}><code className="mono">//copy</code><Icon name="copy"/></button> 复制到剪贴板。</li>
+                        <li>输入 <button type="button" className="button button-secondary command-copy" aria-label="复制 /schemcloud download" onClick={() => copy('/schemcloud download', '/schemcloud download')}><code className="mono">/schemcloud download</code><Icon name="copy"/></button>。它会把当前剪贴板上传并生成可分享的下载链接。</li>
+                        <li>等待上传成功后，复制游戏返回的下载地址分享给对方。</li>
+                    </ol>
+                </Card>
+            </div>}
         </div>
-        {uploadResult && <Card title="上传凭证" description="密钥不会再次显示，请现在复制并保存在安全位置。"
-                               className="credentials-card">
-            <div className="credential-grid"><Credential label="下载密钥 · 可分享" value={uploadResult.download_key}
-                                                         onCopy={() => copy(uploadResult.download_key, '下载密钥')}/>
-              <Credential
-                label="在方屿加载" value={`/schemcloud load url:${uploadResult.download_key}`}
-                onCopy={() => copy(`/schemcloud load url:${uploadResult.download_key}`, '加载命令')}/>
-            </div>
-        </Card>}</AppLayout>
+    </AppLayout>
 }

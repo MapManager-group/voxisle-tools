@@ -27,9 +27,6 @@
   .nav-group a > .icon { @apply h-6 w-6 p-0.5; }
   .nav-group a.active { @apply bg-primary-50 text-primary-700 hover:bg-primary-100 hover:text-primary-700 dark:bg-primary-700/25 dark:text-primary-300 dark:hover:bg-primary-700/40 dark:hover:text-primary-300; }
   .nav-group a.active > .icon { @apply text-primary-700 dark:text-primary-300; }
-  .sidebar-foot { @apply mx-5 mb-5 flex items-start gap-2 border-t border-gray-200 pt-4 text-xs leading-5 text-gray-500 dark:border-gray-700 dark:text-gray-400; }
-  .sidebar-foot .icon { @apply mt-0.5 h-4 w-4; }
-  .sidebar-foot small { @apply block text-xs; }
   .mobile-menu { width: 256px; max-width: 100vw; height: calc(100dvh - 64px); max-height: calc(100dvh - 64px); inset: 64px auto 0 0; margin: 0; padding: 0; color: var(--text); background: var(--surface); border: 0; border-right: 1px solid var(--border); border-radius: 0; }
   .mobile-menu[open] { display: flex; flex-direction: column; }
   .mobile-menu::backdrop { background: rgb(15 23 42 / .5); }
@@ -80,6 +77,8 @@
   .button-primary { @apply border-primary-700 bg-primary-700 text-white enabled:hover:bg-primary-800 enabled:active:bg-primary-800 dark:bg-primary-700 dark:enabled:hover:bg-primary-800; }
   .button-secondary { @apply border-gray-500 bg-white text-gray-900 enabled:hover:bg-gray-100 enabled:active:bg-gray-200 dark:border-gray-400 dark:bg-gray-800 dark:text-gray-200 dark:enabled:hover:bg-gray-700 dark:enabled:active:bg-gray-600; }
   .button-wide { @apply w-full; }
+  .command-copy { @apply min-h-8 px-2 py-1 align-middle; }
+  .command-copy .icon { @apply h-4 w-4; }
   .notice { @apply my-3 flex min-h-11 items-center rounded-lg border px-3 py-2.5 text-sm leading-5; overflow-wrap: anywhere; }
   .notice-success { @apply border-green-200 bg-green-50 text-[#2B7010] dark:border-green-900 dark:bg-green-950/40 dark:text-green-300; }
   .notice-error { @apply border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-300; }
@@ -93,8 +92,6 @@
   .dropzone span { @apply leading-5; }
   .dropzone:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
   .dropzone + .button { @apply mt-4; }
-  .credentials-card { @apply mt-6; }
-  .credential-grid { @apply grid grid-cols-2 gap-4; }
   .credential { @apply flex min-w-0 items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-400 dark:bg-gray-700; }
   .credential.is-sensitive { border-color: var(--accent); }
   .credential > div { @apply min-w-0; }
@@ -115,7 +112,6 @@
   .skip-link { @apply fixed left-4 top-[-100px] z-50 rounded-lg bg-primary-700 px-4 py-3 text-sm text-white focus:top-3; }
 @media (max-width: 1100px) { .schematic-grid { grid-template-columns: 1fr; } }
 @media (max-width: 639px) {
-  .credential-grid { grid-template-columns: 1fr; gap: 12px; }
   .topbar { padding-inline: 16px; gap: 8px; }
   .service-status { padding: 0; min-height: 28px; width: 28px; justify-content: center; }
   .service-status > span { @apply sr-only; }
