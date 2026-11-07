@@ -43,7 +43,6 @@ src/
 
 | 变量                          | 用途                         |
 |-------------------------------|------------------------------|
-| `VITE_QR_API_BASE_URL`        | 二维码服务基础地址           |
 | `VITE_SCHEMATIC_API_BASE_URL` | Schematic Cloud 服务基础地址 |
 | `VITE_LOGO_CDN_URL`           | 品牌 Logo 地址               |
 
@@ -74,7 +73,7 @@ src/
 
 ## 6. API 与文件安全
 
-- 请求字段、方法、状态码和响应类型必须与 `qrcode-generate-API.md`、`schematic-cloud-API.md` 一致。
+- 请求字段、方法、状态码和响应类型必须与 `schematic-cloud-API.md` 一致。
 - 上传使用 `FormData` 时不得手动设置 `Content-Type`，由浏览器生成 multipart boundary。
 - 二进制下载不得按 JSON 解析；错误响应优先依据 HTTP 状态码，再读取服务端错误文本。
 - 下载密钥可以分享；删除密钥视为密码，不写入 URL 参数、日志、通知或持久化存储。

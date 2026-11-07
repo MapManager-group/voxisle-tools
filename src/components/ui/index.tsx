@@ -19,7 +19,3 @@ export function Status({ notice }: { notice: Notice }) {
 export function Button({ icon, tone = 'primary', wide = true, busy = false, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { icon: IconName; tone?: 'primary' | 'secondary'; wide?: boolean; busy?: boolean }) {
   return <button type="submit" {...props} disabled={busy || props.disabled} aria-busy={busy || undefined} className={`button button-${tone}${wide ? ' button-wide' : ''}`}><span className="button-icon">{busy ? <span className="button-spinner" aria-hidden="true"/> : <Icon name={icon}/>}</span>{children}</button>
 }
-
-export function EmptyState({ icon, title, text }: { icon: IconName; title: string; text: string }) {
-  return <div className="empty"><span className="empty-icon"><Icon name={icon}/></span><strong>{title}</strong><span>{text}</span></div>
-}

@@ -4,7 +4,7 @@ import { Icon } from '../../components/ui/Icon'
 import { toolGroups } from './tools'
 
 export function HomePage() {
-  return <AppLayout activeTool="home" eyebrow="VOXISLE TOOLS" title="工具首页" description="从建筑蓝图、世界转换到方块配色，找到下一次创作需要的工具。">
+  return <AppLayout activeTool="home" eyebrow="VOXISLE TOOLS" title="工具首页" description="在这里找到创作需要的工具">
     <div className="catalog-sections">
       {toolGroups.map((group) => <section className="catalog-section" key={group.name}>
         <header className="section-header"><div className="section-title"><h2>{group.name}</h2><span className="section-count" aria-label={`${group.tools.length} 个工具`}>{group.tools.length}</span></div>{group.description && <p>{group.description}</p>}</header>
@@ -13,7 +13,7 @@ export function HomePage() {
         const external = /^https?:\/\//i.test(tool.href)
         return <Card key={tool.href} title={tool.name} description={tool.description} tags={tool.tags} className="tool-card">
           <a className="button button-secondary button-wide" href={tool.href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} aria-label={`${external ? '访问' : '打开'}${tool.name}${external ? '（新标签页）' : ''}`}>
-            {external ? '访问网站' : '打开工具'}<Icon name={external ? 'external' : 'arrow'}/>
+            {external ? '访问网站、' : '打开工具'}<Icon name={external ? 'external' : 'arrow'}/>
           </a>
         </Card>
       })}</div></section>)}

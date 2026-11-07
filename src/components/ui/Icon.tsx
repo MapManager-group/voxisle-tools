@@ -1,9 +1,8 @@
 // MDI paths from MapManager-frontend/@mdi/js (Pictogrammers Free License).
 // See docs/MDI-LICENSE.txt. Keep this subset aligned with the MapManager icon set.
-export type IconName = 'qr' | 'cloud' | 'download' | 'upload' | 'copy' | 'check' | 'home' | 'image' | 'arrow' | 'external' | 'sun' | 'moon' | 'menu' | 'close'
+export type IconName = 'cloud' | 'download' | 'upload' | 'copy' | 'check' | 'home' | 'image' | 'arrow' | 'external' | 'sun' | 'moon' | 'menu' | 'close'
 
 const paths: Record<IconName, string> = {
-  "qr": "M3,11H5V13H3V11M11,5H13V9H11V5M9,11H13V15H11V13H9V11M15,11H17V13H19V11H21V13H19V15H21V19H19V21H17V19H13V21H11V17H15V15H17V13H15V11M19,19V15H17V19H19M15,3H21V9H15V3M17,5V7H19V5H17M3,3H9V9H3V3M5,5V7H7V5H5M3,15H9V21H3V15M5,17V19H7V17H5Z",
   "cloud": "M6.5 20Q4.22 20 2.61 18.43 1 16.85 1 14.58 1 12.63 2.17 11.1 3.35 9.57 5.25 9.15 5.88 6.85 7.75 5.43 9.63 4 12 4 14.93 4 16.96 6.04 19 8.07 19 11 20.73 11.2 21.86 12.5 23 13.78 23 15.5 23 17.38 21.69 18.69 20.38 20 18.5 20Z",
   "download": "M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z",
   "upload": "M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z",

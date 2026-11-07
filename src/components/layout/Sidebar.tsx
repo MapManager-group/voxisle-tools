@@ -4,10 +4,10 @@ import { Icon, type IconName } from '../ui/Icon'
 
 const groups: { title: string; items: { tool?: Tool; href?: string; label: string; icon: IconName }[] }[] = [
   { title: '概览', items: [{ tool: 'home', label: '工具首页', icon: 'home' }] },
-  { title: '创作工具', items: [
+  { title: '方屿工具', items: [
     { href: 'https://map.voxisle.art', label: '地图管理平台', icon: 'external' },
     { tool: 'schematic', label: 'Schematic Cloud', icon: 'cloud' },
-    { tool: 'qrcode', label: '二维码生成器', icon: 'qr' },
+    { tool: 'lorian-city', label: '洛林 · 世界 Lorian City 专区', icon: 'home' },
   ] },
   { title: '素材资源', items: [{ tool: 'resources', label: '素材网站', icon: 'image' }] },
 ]

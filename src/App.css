@@ -68,15 +68,12 @@
   .tool-card .button { @apply justify-between; }
   .catalog-contact { @apply rounded-lg border px-5 py-4 text-center text-xs leading-6; color: var(--accent); background: var(--accent-muted); border-color: var(--accent-muted); }
   .catalog-contact a { @apply font-semibold underline underline-offset-4 hover:no-underline; }
-  .workspace-grid, .schematic-grid { @apply grid items-start gap-6; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+  .schematic-grid { @apply grid items-start gap-6; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
   .field { @apply mb-5; }
-  .field-row { @apply grid grid-cols-2 gap-x-6 gap-y-5; }
   .field-label { @apply mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-200; }
   .field-help { @apply mt-1 text-xs leading-5 text-gray-500 dark:text-gray-400; }
   input:not([type=color]):not([type=file]):not([type=checkbox]), select { @apply block h-11 w-full rounded-lg border border-gray-500 bg-gray-50 px-3 text-sm text-gray-900 transition-colors duration-150 ease-out hover:border-gray-600 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-400 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400; }
   select { padding-right: 36px; }
-  .color-control { @apply grid gap-2; grid-template-columns: 44px 1fr; }
-  .color-control input[type=color] { @apply h-11 w-11 rounded-lg border border-gray-500 bg-gray-50 p-1 dark:border-gray-400 dark:bg-gray-700; }
   .button { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-transparent px-4 py-2 text-sm font-medium no-underline transition-colors duration-150 ease-out disabled:cursor-not-allowed disabled:opacity-50; }
   .button-icon { @apply inline-flex h-5 w-5 shrink-0 items-center justify-center; }
   .button-spinner { @apply h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent; }
@@ -86,15 +83,8 @@
   .notice { @apply my-3 flex min-h-11 items-center rounded-lg border px-3 py-2.5 text-sm leading-5; overflow-wrap: anywhere; }
   .notice-success { @apply border-green-200 bg-green-50 text-[#2B7010] dark:border-green-900 dark:bg-green-950/40 dark:text-green-300; }
   .notice-error { @apply border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-300; }
-  .qr-preview { @apply grid min-h-[360px] place-items-center rounded-lg border border-gray-200 p-6 dark:border-gray-700; background-color: var(--canvas); background-image: linear-gradient(45deg, var(--border) 25%, transparent 25%), linear-gradient(-45deg, var(--border) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--border) 75%), linear-gradient(-45deg, transparent 75%, var(--border) 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0; }
-  .qr-preview img { @apply block aspect-square rounded-lg bg-white object-contain p-3 shadow-sm; width: min(100%, 310px); }
-  .empty { @apply flex flex-col items-center rounded-lg bg-white/95 p-6 text-center text-xs text-gray-500 dark:bg-gray-800/95 dark:text-gray-400; }
-  .empty strong { @apply mt-4 text-sm font-semibold text-gray-900 dark:text-white; }
-  .empty > span:last-child { @apply mt-1 leading-5; }
   .empty-icon { @apply grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-primary-50 text-primary-700 dark:bg-gray-700 dark:text-primary-300; }
   .empty-icon .icon { @apply h-6 w-6; }
-  .preview-meta { @apply flex min-h-[52px] flex-wrap items-center gap-2 py-3; }
-  .preview-meta span { @apply rounded bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300; }
   .dropzone { @apply grid min-h-[232px] place-items-center rounded-lg border-2 border-dashed border-gray-500 bg-gray-50 transition-colors duration-150 ease-out hover:border-primary-300 hover:bg-gray-100 dark:border-gray-400 dark:bg-gray-700/30 dark:hover:border-gray-300 dark:hover:bg-gray-700; }
   .dropzone.is-dragging { border-color: var(--focus); background: var(--focus-muted); }
   .dropzone input { @apply sr-only; }
@@ -122,29 +112,14 @@
   .tag-purple { @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200; }
   .tag-rose { @apply bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200; }
   .tag-slate { @apply bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300; }
-  .qr-options { @apply mb-4 mt-2; }
-  .qr-option { @apply flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium; }
-  .qr-option input[type=checkbox] { @apply h-4 w-4 shrink-0 rounded border-gray-500 p-0 text-primary-700 focus:ring-primary-500 dark:border-gray-400 dark:bg-gray-700; accent-color: var(--primary); }
-  .qr-option-help { @apply ml-7 block text-xs leading-5 text-gray-500 dark:text-gray-400; }
-  .qr-options .field { @apply ml-7 mt-2; }
-  .qr-logo-upload { @apply mb-4; }
-  .qr-logo-dropzone, .qr-logo-dropzone label { @apply min-h-[132px]; }
-  .qr-logo-dropzone label { @apply p-4; }
-  .qr-logo-dropzone strong { @apply mb-1 mt-2; }
-  .qr-logo-dropzone .empty-icon { @apply h-9 w-9; }
-  .qr-logo-dropzone .empty-icon .icon { @apply w-5; }
-  .qr-logo-error { @apply text-xs; color: var(--danger); }
-  .qr-logo-clear { @apply min-h-8 border-0 bg-transparent py-1 text-xs font-semibold hover:underline; color: var(--primary); }
   .skip-link { @apply fixed left-4 top-[-100px] z-50 rounded-lg bg-primary-700 px-4 py-3 text-sm text-white focus:top-3; }
-@media (max-width: 1100px) { .workspace-grid, .schematic-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .schematic-grid { grid-template-columns: 1fr; } }
 @media (max-width: 639px) {
-  .field-row, .credential-grid { grid-template-columns: 1fr; gap: 0; }
-  .credential-grid { gap: 12px; }
+  .credential-grid { grid-template-columns: 1fr; gap: 12px; }
   .topbar { padding-inline: 16px; gap: 8px; }
   .service-status { padding: 0; min-height: 28px; width: 28px; justify-content: center; }
   .service-status > span { @apply sr-only; }
   .page-header-actions { gap: 4px; }
-  .qr-preview { min-height: 260px; }
   .app-footer { justify-content: center; text-align: center; }
 }
 }

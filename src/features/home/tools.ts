@@ -4,7 +4,31 @@ export type ToolCard = { name: string; description: string; href: string; tags: 
 
 export const toolGroups: { name: string; description: string; tools: ToolCard[] }[] = [
     {
-        name: '洛林·方屿VoxIsle 社区指南',
+        name: '服务器工具',
+        description: '',
+        tools: [
+            {
+                name: '地图管理平台',
+                description: '管理和申请托管服地图。',
+                href: 'https://map.voxisle.art',
+                tags: [['方屿', 'blue']]
+            },
+            {
+                name: 'Schematic Cloud',
+                description: '上传并分享 schematic/schem 文件，可以在方屿使用。',
+                href: '#schematic',
+                tags: [['Schematic', 'purple'], ['方屿', 'blue']]
+            },
+            {
+                name: '洛林 · 世界 Lorian City 专区',
+                description: '大世界玩法常用工具。',
+                href: '#lorian-city',
+                tags: [['洛林·世界', 'green'], ['方屿', 'blue']]
+            },
+        ],
+    },
+    {
+        name: '社区和服务器指南',
         description: '',
         tools: [
             {
@@ -29,14 +53,8 @@ export const toolGroups: { name: string; description: string; tools: ToolCard[] 
     },
     {
         name: '生成器',
-        description: '生成二维码、像素画、粒子指令与动态视觉内容。',
+        description: '生成像素画、粒子指令与动态视觉内容。',
         tools: [
-            {
-                name: '二维码生成器',
-                description: '将链接生成带方屿标识的透明二维码，支持调整尺寸与配色，下载后用于网页、海报或印刷物。',
-                href: '#qrcode',
-                tags: [['方屿', 'blue'], ['二维码', 'cyan'], ['站内工具', 'green']]
-            },
             {
                 name: 'BDEngine',
                 description: '通过可视化页面，使用mc中的元素创建mc中的展示实体。',
@@ -125,13 +143,13 @@ export const toolGroups: { name: string; description: string; tools: ToolCard[] 
                 name: 'NIPPON COLORS',
                 description: '收录具有名称与出处的日本传统色，可直观浏览色值和色彩关系。',
                 href: 'https://nipponcolors.com/',
-                tags: [['日系', 'rose'], ['传统色', 'amber'], ['颜色名称', 'slate']]
+                tags: [['日系', 'rose'], ['传统色', 'amber'], ['配色', 'slate']]
             },
             {
                 name: '中国色',
                 description: '浏览带有传统名称的中国色彩，快速获取色值与配色灵感。',
                 href: 'http://zhongguose.com/',
-                tags: [['中系', 'rose'], ['传统色', 'amber'], ['颜色名称', 'slate']]
+                tags: [['中系', 'rose'], ['传统色', 'amber'], ['配色', 'slate']]
             },
         ],
     },
@@ -139,12 +157,6 @@ export const toolGroups: { name: string; description: string; tools: ToolCard[] 
         name: '转换工具',
         description: '处理地图、模型、Schematic 与图片视频文件。',
         tools: [
-            {
-                name: 'Schematic Cloud',
-                description: '上传并分享 schematic/schem 文件，可以在方屿使用。',
-                href: '#schematic',
-                tags: [['Minecraft', 'green'], ['Schematic', 'purple'], ['站内工具', 'blue']]
-            },
             {
                 name: 'Chunker',
                 description: '在 Java 版与基岩版之间转换 Minecraft 世界，方便迁移地图。',
