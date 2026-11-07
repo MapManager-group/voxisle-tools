@@ -6,8 +6,8 @@ const links = [
   { name: '游玩指南', description: '了解洛林·世界的游玩方式。', href: 'https://lorianstudio.feishu.cn/wiki/GVgSw7M0hiw2kekUSnRcy5P4n9b', action: '阅读指南' },
   { name: '洛林·世界网页地图', description: '在网页中浏览洛林·世界地图。', href: 'https://dynmap.voxisle.art', action: '打开地图' },
   { name: '建筑白名单申请', description: '申请洛林·世界建筑白名单。', href: 'https://hanamizu.feishu.cn/share/base/form/shrcnAKCPZ1o87t1E8dETDXlS7c', action: '填写申请' },
-  { name: 'Axiom 权限申请', description: '申请使用 Axiom 的权限。', href: 'https://hanamizu.feishu.cn/share/base/form/shrcn3OYmCAe5nkREtZCKamUQvc', action: '填写申请' },
-  { name: 'WorldEdit 权限申请', description: '申请使用 WorldEdit 的权限。', href: 'https://hanamizu.feishu.cn/share/base/form/shrcnZOqfrGAJZeImd67OgbY21e', action: '填写申请' },
+  { name: 'Axiom 权限申请', description: '申请在洛林·世界使用 Axiom 的权限。', href: 'https://hanamizu.feishu.cn/share/base/form/shrcn3OYmCAe5nkREtZCKamUQvc', action: '填写申请' },
+  { name: 'WorldEdit 权限申请', description: '申请在洛林·世界使用 WorldEdit 的权限。', href: 'https://hanamizu.feishu.cn/share/base/form/shrcnZOqfrGAJZeImd67OgbY21e', action: '填写申请' },
   { name: '玩家邀请', description: '通过已有权限的玩家邀请，一次性申请多个权限。', href: 'https://hanamizu.feishu.cn/share/base/form/shrcnbxivp3TFo12eKLIBSJjZpb', action: '填写邀请申请' },
 ]
 
