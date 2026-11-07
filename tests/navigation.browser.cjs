@@ -22,6 +22,35 @@ const links = [
     const group = page.locator('aside.sidebar .nav-group').filter({ hasText: '方屿工具' })
     assert.deepEqual(await group.locator('a').allTextContents(), ['地图管理平台', 'Schematic Cloud', title])
     assert.equal(await page.locator('a[href="#qrcode"]').count(), 0)
+    const main = page.locator('main')
+    assert.deepEqual(await main.locator('.section-title h2').allTextContents(), ['服务器工具', '社区和服务器指南', '工具与资源'])
+    assert.deepEqual(await main.locator('.tool-card a[href^="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')).sort()), ['#creative-tools', '#lorian-city', '#resources', '#schematic'])
+    assert.equal(await main.locator('a[href="https://bdengine.app"]').count(), 0)
+    await main.locator('a[href="#creative-tools"]').click()
+    await page.getByRole('heading', { name: '创作工具', level: 1 }).waitFor()
+    await page.waitForFunction(() => document.title === '创作工具 · 方屿工具箱')
+    assert.equal(await page.locator('aside.sidebar a[href="#creative-tools"]').getAttribute('aria-current'), 'page')
+    assert.deepEqual(await main.locator('.section-title h2').allTextContents(), ['生成器', '配色工具', '转换工具'])
+    assert.deepEqual(await main.locator('.section-count').allTextContents(), ['9', '6', '4'])
+    assert.equal(await main.locator('.tool-card').count(), 19)
+    for (const theme of ['light', 'dark']) {
+      await page.evaluate(value => { document.documentElement.dataset.theme = value }, theme)
+      for (const width of [1440, 390]) {
+        await page.setViewportSize({ width, height: 1000 })
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+        if (process.env.SCREENSHOT_DIR) await page.screenshot({ path: `${process.env.SCREENSHOT_DIR}/creative-tools-${theme}-${width}.png`, fullPage: true })
+      }
+    }
+    await page.getByRole('button', { name: '打开导航菜单' }).click()
+    await page.getByRole('dialog').getByRole('link', { name: '工具首页' }).click()
+    await page.getByRole('dialog').waitFor({ state: 'hidden' })
+    await page.getByRole('heading', { name: '工具首页', level: 1 }).waitFor()
+    await page.getByRole('button', { name: '打开导航菜单' }).click()
+    await page.getByRole('dialog').getByRole('link', { name: '创作工具', exact: true }).click()
+    await page.getByRole('dialog').waitFor({ state: 'hidden' })
+    await page.getByRole('heading', { name: '创作工具', level: 1 }).waitFor()
+    await page.setViewportSize({ width: 1440, height: 1000 })
+
     await group.getByRole('link', { name: title }).click()
     await page.getByRole('heading', { name: title, level: 1 }).waitFor()
     await page.waitForFunction(expected => document.title === expected, `${title} · 方屿工具箱`)
@@ -60,12 +89,12 @@ const links = [
     await page.getByRole('heading', { name: title, level: 1 }).waitFor()
     await page.goto(origin + '/#qrcode')
     await page.getByRole('heading', { name: '工具首页', level: 1 }).waitFor()
-    for (const [hash, heading] of [['schematic', 'Schematic Cloud'], ['resources', '素材网站']]) {
+    for (const [hash, heading] of [['creative-tools', '创作工具'], ['schematic', 'Schematic Cloud'], ['resources', '素材网站']]) {
       await page.goto(`${origin}/#${hash}`)
       await page.getByRole('heading', { name: heading, level: 1 }).waitFor()
     }
     assert.deepEqual(errors, [])
-    console.log('Navigation checks passed: grouping, six links, direct route, removed route, themes, responsive layout, keyboard, mobile menu and sibling pages.')
+    console.log('Navigation checks passed: homepage separation, 19 creative tools, grouping, six links, direct routes, removed route, themes, responsive layout, keyboard, mobile menu and sibling pages.')
   } finally {
     await browser.close()
   }

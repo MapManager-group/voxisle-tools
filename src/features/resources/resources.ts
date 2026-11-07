@@ -1,4 +1,4 @@
-import type { ToolCard } from '../home/tools'
+import type { ToolCard } from '../../components/ui/ToolCatalog'
 
 export const resources: ToolCard[] = [
   { name: 'Axiom 蓝图素材库', description: '浏览并获取 Axiom 社区分享的 Minecraft 建筑蓝图与创作素材。', href: 'https://axiomassets.net/browse', tags: [['Minecraft', 'green'], ['蓝图', 'purple'], ['社区素材', 'blue']] },

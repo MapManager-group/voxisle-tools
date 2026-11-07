@@ -14,9 +14,13 @@
 
 回归测试：Node 24 下运行 `node --test tests/lcverify.test.mjs`。启动开发服务后运行 `node tests/lcverify.browser.cjs`；可用 `PLAYWRIGHT_MODULE` 指定已有 Playwright 安装、`TEST_ORIGIN` 指定开发服务地址。浏览器测试拦截接口，不触发真实飞书工作流。
 
+## 创作工具目录
+
+生成器、配色工具和转换工具位于 `#creative-tools`，可从首页或侧栏「创作工具」进入。首页仅保留方屿服务器工具、社区指南与各页面入口。
+
 ## 手动添加工具
 
-编辑 `src/features/home/tools.ts`，将任意预留项的 `name`、`description`、`href` 填好即可：
+编辑 `src/features/creative-tools/tools.ts`（创作工具目录）或 `src/features/home/tools.ts`（首页），将任意预留项的 `name`、`description`、`href` 填好即可：
 
 ```ts
 { name: '工具名称', description: '工具介绍', href: 'https://example.com/' },
