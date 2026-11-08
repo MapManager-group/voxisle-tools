@@ -4,7 +4,7 @@ import { Icon } from '../../components/ui/Icon'
 import { resources } from './resources'
 
 export function ResourcesPage() {
-  return <AppLayout activeTool="resources" eyebrow="VOXISLE RESOURCES" title="素材网站" description="集中浏览蓝图、图片、插图与设计灵感网站；所有链接将在新标签页打开。">
+  return <AppLayout activeTool="resources" eyebrow="VOXISLE RESOURCES" title="素材网站" description="获取设计灵感和设计素材。">
     <div className="tool-grid">
       {resources.map((resource) => <Card key={resource.href} title={resource.name} description={resource.description} tags={resource.tags} className="tool-card">
         <a className="button button-secondary button-wide" href={resource.href} target="_blank" rel="noopener noreferrer" aria-label={`访问${resource.name}（新标签页）`}>

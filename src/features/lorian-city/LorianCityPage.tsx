@@ -12,7 +12,7 @@ const links = [
 ]
 
 export function LorianCityPage() {
-  return <AppLayout activeTool="lorian-city" eyebrow="LORIAN CITY" title="洛林 · 世界 Lorian City 专区" description="查看游玩指南与网页地图，申请建筑和编辑权限；也可通过已有权限的玩家邀请，一次性申请多个权限。">
+  return <AppLayout activeTool="lorian-city" eyebrow="LORIAN CITY" title="洛林 · 世界 Lorian City 专区" description="查询指南、网页地图、申请建筑权限。">
     <div className="tool-grid">
       {links.map(link => <Card key={link.href} title={link.name} description={link.description} className="tool-card">
         <a className="button button-secondary button-wide" href={link.href} target="_blank" rel="noopener noreferrer" aria-label={`${link.action}：${link.name}（新标签页）`}>

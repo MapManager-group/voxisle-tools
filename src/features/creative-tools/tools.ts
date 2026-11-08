@@ -3,7 +3,7 @@ import type { ToolGroup } from '../../components/ui/ToolCatalog'
 export const creativeToolGroups: ToolGroup[] = [
     {
         name: '生成器',
-        description: '生成像素画、粒子指令与动态视觉内容。',
+        description: '生成像素画、粒子指令和各类特效内容。',
         tools: [
             {
                 name: 'BDEngine',
@@ -63,7 +63,7 @@ export const creativeToolGroups: ToolGroup[] = [
     },
     {
         name: '配色工具',
-        description: '查找渐变、传统色与 Minecraft 方块配色。',
+        description: '查找和生成配色方案。',
         tools: [
             {
                 name: 'hueBlocks 配色工具',
@@ -105,7 +105,7 @@ export const creativeToolGroups: ToolGroup[] = [
     },
     {
         name: '转换工具',
-        description: '处理地图、模型、Schematic 与图片视频文件。',
+        description: '处理地图存档、模型、Schematic 与图片视频等文件。',
         tools: [
             {
                 name: 'Chunker',
